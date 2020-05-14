@@ -1,0 +1,95 @@
+.book-list {
+    display: flex;
+    justify-content: space-between;
+
+    .left-content {
+        top: 107px;
+        position: -webkit-sticky;
+        position: sticky;
+        width: 20%;
+        min-width: 280px;
+        max-width: 300px;
+        padding: 7px;
+        height: calc(100vh - 120px);
+        overflow-y: scroll;
+
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 8px -2px rgba(31, 45, 61, .4);
+        border-radius: 6px;
+
+        .user-detail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+
+            .fa-user {
+                font-size: 50px;
+                margin-bottom: 12px;
+            }
+        }
+
+        .filter-option {
+            padding-bottom: 12px;
+            background-color: rgba(221, 226, 232, .5) !important;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .right-content {
+        margin-top: 20px;
+        width: 80%;
+        min-height: 700px;
+
+        .books {
+            display: flex;
+            flex-wrap: wrap;
+
+            .grid-view {
+                flex-direction: column;
+            }
+
+            .list-view {
+                width: 90%;
+                justify-content: space-between;
+            }
+
+            .book-item {
+                margin: 12px;
+                display: flex;
+                flex-wrap: wrap;
+                background-color: #fff;
+                border-radius: 6px;
+                border: 1px solid #dde2e8;
+
+                .image-section {
+                    margin: 12px;
+
+                    img {
+                        width: 200px;
+                        height: 200px;
+
+                    }
+                }
+
+                .detail-section {
+                    margin: 12px;
+
+                    img {
+                        width: 30px
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+}

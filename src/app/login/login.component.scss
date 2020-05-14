@@ -1,0 +1,61 @@
+.login {
+    background: #fffdfd;
+    margin: 40px;
+    padding: 22px 16px;
+    border-radius: 5px;
+    max-width: 455px;
+    border: 20px solid #16a9c7;
+
+    .input-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 26px;
+
+        .description {
+            font-size: 14px;
+            color: #77899B;
+            font-weight: 500;
+            line-height: 17px;
+        }
+
+        .mobile-input {
+            padding-top: 22px;
+
+            .label {
+                color: #1F2D3D;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 17px;
+                width: 100%;
+                padding-bottom: 14px;
+            }
+
+            input {
+                width: 97%;
+                line-height: 38px;
+                padding-inline-start: 5px;
+                border: 1px solid #B8C1CB;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+        }
+
+        .confirm-button {
+            width: 100% !important;
+            padding-top: 30px;
+            display: flex;
+            justify-content: flex-end;
+
+            .login-btn {
+                padding: 8px;
+                background: #347fd6;
+                color: #fff;
+                border-radius: 6px;
+            }
+
+        }
+
+    }
+}
