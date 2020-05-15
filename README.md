@@ -16,12 +16,12 @@ Since there is no registration, so existing user authentication only
 
 Use one of following credential for login
 
-Email : 'umang@gmail.com'  (Admin)
-Email : 'anab@gmail.com'
-Email : 'indra@gmail.com' (Admin)
-Email : 'shubham@gmail.com'
+* Email : 'umang@gmail.com'  (Admin)
+* Email : 'anab@gmail.com'
+* Email : 'indra@gmail.com' (Admin)
+* Email : 'shubham@gmail.com'
 
-Password: 1234566    (for all users);
+* Password: 1234566    (for all users);
 
 
 
