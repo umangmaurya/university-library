@@ -27,8 +27,9 @@ export class BookListComponent implements OnInit {
     listView: boolean = false;
     showFav: boolean = false;
 
-    index: number = 1;
-    recordPerPage: number = 8;
+    index: number = 0; // page number
+    recordPerPage: number = 8; // grid view 8 items max will be displayed
+    isRightArrowDisabled: boolean = false
 
     constructor(
         private store: StorageService,
@@ -92,7 +93,7 @@ export class BookListComponent implements OnInit {
                     element.volumeInfo.authorsName = element.volumeInfo.authors.join(',');
                 });
                 this.allList = newBooks.concat(items); // Copy
-                this.bookList = newBooks.concat(items);;
+                this.bookList = newBooks.concat(items).slice(0, this.recordPerPage); // for pagination
             }
         )
     }
@@ -117,6 +118,12 @@ export class BookListComponent implements OnInit {
      */
     toggleView() {
         this.listView = !this.listView;
+        if (this.listView) {
+            this.recordPerPage = 4; // showing only 4 books in case of list view
+        } else {
+            this.recordPerPage = 8; // showing 8 books in case of grid view
+        }
+        this.createPaginationWiseData();
     }
 
     /**
@@ -140,6 +147,41 @@ export class BookListComponent implements OnInit {
      */
     navigateToDetail(id: string) {
         this.router.navigate(['bookDetail'], { queryParams: { volume_id: id } });
+    }
+
+    /**
+     * Filtering books Page wise
+     */
+    createPaginationWiseData() {
+        let start = this.index * this.recordPerPage
+        this.bookList = [];
+        for (start; start < this.allList.length && this.bookList.length < this.recordPerPage; start++) {
+            this.bookList.unshift(this.allList[start]);
+        }
+
+        let pageDataLength = this.recordPerPage * (this.index + 1)
+        if (pageDataLength >= this.allList.length) {
+            this.isRightArrowDisabled = true;
+        } else {
+            this.isRightArrowDisabled = false;
+        }
+
+    }
+
+    /**
+     * Show previous data on backward
+     */
+    prevPage() {
+        this.index--;
+        this.createPaginationWiseData()
+    }
+
+    /**
+     * Show remaining data on forward
+     */
+    nextPage() {
+        this.index++;
+        this.createPaginationWiseData()
     }
 
 }

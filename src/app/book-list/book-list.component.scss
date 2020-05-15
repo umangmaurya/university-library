@@ -86,6 +86,11 @@
                 margin: 20px;
             }
 
+            .disabled {
+                color: #77899b;
+                pointer-events: none !important;
+            }
+
             .no-list {
                 margin: auto;
                 color: #a6adb3;

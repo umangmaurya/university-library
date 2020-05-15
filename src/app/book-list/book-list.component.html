@@ -54,6 +54,9 @@
                         <span class="item">{{book.volumeInfo.publisher}}, {{ book.volumeInfo.publishedDate }}</span>
                     </div>
                 </div>
+                <span> <i (click)="prevPage()" [ngClass]="! index ? 'disabled':''" class="fas fa-arrow-left"></i>
+                    {{index +1 }} <i (click)="nextPage()" [ngClass]="isRightArrowDisabled ? 'disabled':''" class="fas fa-arrow-right"></i>
+                </span>
             </ng-container>
             <ng-template #showNoBooksMsg>
                 <label class="no-list">No Books</label>
