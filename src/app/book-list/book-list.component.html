@@ -13,7 +13,7 @@
             </div>
             <div *ngIf="isAdmin" class="mode-view">
                 <label>Add a new book</label>
-                <span> <i class="fas fa-external-link-alt"></i></span>
+                <span (click)="addNewBook()"> <i class="fas fa-external-link-alt"></i></span>
             </div>
             <div class="mode-view">
                 <label> {{ showFav ? 'Show all' : 'Show favourites'}}</label>

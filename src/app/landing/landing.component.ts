@@ -20,6 +20,9 @@ export class LandingComponent implements OnInit {
         this.checkLogin();
     }
 
+    /**
+     * Check login details for sign/sign out
+     */
     checkLogin() {
         let user = this.store.getData('loggedUser');
         if (user) {
@@ -28,13 +31,20 @@ export class LandingComponent implements OnInit {
         }
     }
 
+    /**
+     *  Help us to logout user 
+     */
     logOut() {
         this.store.removeData('loggedUser');
         this.openNewPage('');
         window.location.reload(true);
     }
 
-
+    /**
+     * @param  {String} pageName
+     * @returns void
+     * Navigates to page url provided as pageName
+     */
     openNewPage(pageName: String): void {
         this.router.navigate([`${pageName}`]);
     }

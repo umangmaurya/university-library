@@ -1,1 +1,55 @@
-<p>add-new-book works!</p>
+<div class="add-new-book">
+    <span class="description">
+        Please provide book details
+    </span>
+    <div class="input-form">
+
+        <div class="mobile-input">
+            <div class="label">
+                <label>Book title</label>
+            </div>
+            <input type='text' placeholder='name of the book' [(ngModel)]="volumeInfo.title" />
+        </div>
+        <div class="mobile-input">
+            <div class="label">
+                <label>Book subtitle</label>
+            </div>
+            <input type='text' placeholder='subtitle' [(ngModel)]="volumeInfo.subtitle" />
+        </div>
+        <div class="mobile-input">
+            <div class="label">
+                <label>Image url </label>
+            </div>
+            <input type='tesxt' disabled placeholder='url' [(ngModel)]="volumeInfo.imageLinks.thumbnail" />
+        </div>
+        <div class="mobile-input">
+            <div class="label">
+                <label>Description </label>
+            </div>
+            <input type='text' placeholder='description' [(ngModel)]="volumeInfo.description" />
+        </div>
+        <div class="mobile-input">
+            <div class="label">
+                <label>Author's name </label>
+            </div>
+            <input type='text' placeholder='author name' [(ngModel)]="volumeInfo.authorsName" />
+        </div>
+        <div class="mobile-input">
+            <div class="label">
+                <label>Publishers name </label>
+            </div>
+            <input type='text' placeholder='publishers name' [(ngModel)]="volumeInfo.publisher" />
+        </div>
+        <div class="mobile-input">
+            <div class="label">
+                <label>Volume id</label>
+            </div>
+            <input type='text' disabled placeholder='any google book volume id' [(ngModel)]="id" />
+        </div>
+        <div class="confirm-button">
+            <span class="text-red "> * Some fields are pre populated
+            </span> <span class="login-btn" (click)="submitBook()"> Submit </span>
+        </div>
+    </div>
+
+</div>

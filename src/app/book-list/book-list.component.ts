@@ -81,6 +81,9 @@ export class BookListComponent implements OnInit {
 
         let url = `https://www.googleapis.com/books/v1/volumes?q=${this.searchKey},maxResults=20`;
 
+        /* Check if there books added by admin user */
+        let newBooks = this.store.getData('newBooks') || [];
+
         this.httpClient.get(url).subscribe(
             res => {
                 const { items } = res as any;
@@ -88,10 +91,17 @@ export class BookListComponent implements OnInit {
                     element.isFav = false;
                     element.volumeInfo.authorsName = element.volumeInfo.authors.join(',');
                 });
-                this.allList = items; // Copy
-                this.bookList = items;
+                this.allList = newBooks.concat(items); // Copy
+                this.bookList = newBooks.concat(items);;
             }
         )
+    }
+
+    /**
+     * Navigates to add new book form page
+     */
+    addNewBook() {
+        this.router.navigate(['addNewBook']);
     }
 
     /**
