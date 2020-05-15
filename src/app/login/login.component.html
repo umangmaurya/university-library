@@ -7,16 +7,16 @@
             <div class="label">
                 <label>Email Address:</label>
             </div>
-            <input type='text' placeholder='Enter your email address' />
+            <input type='email' placeholder='Enter your email address' [(ngModel)]="email" />
         </div>
         <div class="mobile-input">
             <div class="label">
                 <label>Password: </label>
             </div>
-            <input type='text' placeholder='Enter your password' />
+            <input type='password' placeholder='Enter your password' [(ngModel)]="password" />
         </div>
         <div class="confirm-button">
-            <span class="login-btn" (click)="openNewPage('bookList')"> Log in </span>
+            <span class="login-btn" (click)="login()"> Log in </span>
         </div>
     </div>
 </div>

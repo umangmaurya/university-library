@@ -1,1 +1,32 @@
-<p>book-detail works!</p>
+<div class="book-details">
+    <div class="book-info">
+        <div class="image-section">
+            <img alt="bookimage" src={{bookDetails.volumeInfo.imageLinks.thumbnail}} />
+        </div>
+        <div class="detail-section">
+            <div class="summary-section">
+                <div class="publishers">
+                    <span class="title"> {{bookDetails.volumeInfo.title}} </span>
+                    <span class="subtitle">{{bookDetails.volumeInfo.subtitle}}</span>
+                    <span class="item">
+                        <a target="_blank" href="{{bookDetails.volumeInfo.previewLink}}"> Preview on Google books <i
+                                class="fas fa-external-link-alt"></i></a>
+                    </span>
+                </div>
+
+                <div class="publishers">
+                    <span class="item label"> Authors:</span>
+                    <span class="item"> {{bookDetails.volumeInfo.authorsName}} </span>
+                    <span class="item label"> Publisher: </span>
+                    <span class="item">{{bookDetails.volumeInfo.publisher}}, {{ bookDetails.volumeInfo.publishedDate }}</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="description">
+            <span class="item label"> Description:</span>
+            <span>{{bookDetails.volumeInfo.description}}</span>
+        </div>
+    </div>
+
+</div>

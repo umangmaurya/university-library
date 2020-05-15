@@ -1,9 +1,13 @@
 <div class="landing-scene">
     <div class="content">
         <div class="header">
-            <div class="sign-in" (click)="openNewPage('login')">
-                Sign in
+            <div *ngIf="isLoggedIn" class="dash" (click)="openNewPage('bookList')">
+                Dashboard
             </div>
+            <div class="sign-in" (click)="isLoggedIn ? logOut() : openNewPage('login') ">
+                {{ isLoggedIn ? 'Sign out' : 'Sign in'}}
+            </div>
+
         </div>
 
         <div class="site-description">

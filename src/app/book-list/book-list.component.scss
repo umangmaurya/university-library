@@ -3,9 +3,6 @@
     justify-content: space-between;
 
     .left-content {
-        top: 107px;
-        position: -webkit-sticky;
-        position: sticky;
         width: 20%;
         min-width: 280px;
         max-width: 300px;
@@ -39,6 +36,19 @@
 
             display: flex;
             flex-direction: column;
+
+            .mode-view {
+                font-size: 18px;
+                padding: 18px;
+                display: flex;
+                justify-content: space-between;
+                background: white;
+                margin: 5px;
+
+                .fas {
+                    cursor: pointer;
+                }
+            }
         }
     }
 
@@ -47,29 +57,76 @@
         width: 80%;
         min-height: 700px;
 
+        .search-bar {
+            margin: 0px 14px;
+            display: flex;
+            align-items: center;
+
+            input {
+                min-width: 270px;
+                padding: 14px;
+                font-size: 20px;
+            }
+
+            .fa-search {
+                font-size: 36px;
+                cursor: pointer;
+                padding-left: 16px;
+                color: #a6adb3;
+                position: absolute;
+                left: 580px;
+            }
+        }
+
         .books {
             display: flex;
             flex-wrap: wrap;
 
+            .fas {
+                margin: 20px;
+            }
+
+            .no-list {
+                margin: auto;
+                color: #a6adb3;
+                font-size: 28px;
+            }
+
             .grid-view {
                 flex-direction: column;
+
+                .detail-section {
+                    max-width: 215px;
+
+                }
             }
 
             .list-view {
                 width: 90%;
-                justify-content: space-between;
+                padding: 12px;
+                justify-content: space-around;
+
+                .image-section {
+                    margin: 6px;
+
+                    img {
+                        width: 115px;
+                        height: 115px;
+
+                    }
+                }
             }
 
             .book-item {
                 margin: 12px;
                 display: flex;
-                flex-wrap: wrap;
                 background-color: #fff;
                 border-radius: 6px;
                 border: 1px solid #dde2e8;
 
                 .image-section {
                     margin: 12px;
+                    cursor: pointer;
 
                     img {
                         width: 200px;
@@ -80,9 +137,45 @@
 
                 .detail-section {
                     margin: 12px;
+                    display: flex;
+                    flex-direction: column;
 
-                    img {
-                        width: 30px
+                    .title {
+                        color: #1f2d3d;
+                        font-size: 20px;
+                        text-overflow: ellipsis;
+                    }
+
+                    .subtitle {
+                        color: #77899b;
+                        font-size: 14px;
+                        text-overflow: ellipsis;
+                    }
+
+                    .fav {
+                        margin: 6px;
+
+                        img {
+                            width: 30px
+                        }
+                    }
+
+                }
+
+                .summary-section {
+                    color: #77899b;
+                    font-size: 18px;
+                    max-width: 430px;
+                    display: flex;
+                    flex-direction: column;
+
+                    .item {
+                        margin: 8px;
+
+                    }
+
+                    .label {
+                        color: #1f2d3d;
                     }
                 }
             }

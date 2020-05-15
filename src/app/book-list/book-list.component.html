@@ -1,124 +1,64 @@
 <div class="book-list">
-
     <div class="left-content">
-
         <div class="user-detail">
             <i class="far fa-user"></i>
-            <span>Hi Vijay</span>
+            <span>Hi, {{name}}</span>
         </div>
 
         <div class="filter-option">
-
-
-
-
+            <div class="mode-view">
+                <label> {{ listView ? 'Grid View' : 'List View'}}</label>
+                <span *ngIf="listView" (click)="toggleView()"> <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="!listView" (click)="toggleView()"> <i class="fas fa-toggle-off"></i></span>
+            </div>
+            <div *ngIf="isAdmin" class="mode-view">
+                <label>Add a new book</label>
+                <span> <i class="fas fa-external-link-alt"></i></span>
+            </div>
+            <div class="mode-view">
+                <label> {{ showFav ? 'Show all' : 'Show favourites'}}</label>
+                <span *ngIf="showFav" (click)="favoratesAndAll()"> <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="!showFav" (click)="favoratesAndAll()"> <i class="fas fa-toggle-off"></i></span>
+            </div>
         </div>
-
 
     </div>
     <div class="right-content">
-        <div class="books">
-            <div class="book-item grid-view">
-                <div class="image-section">
-                    <img src="./../../assets/library-img.jpg" />
-                </div>
-                <div class="detail-section">
-                    <span>
-                        New Book
-                    </span>
-                    <span>
-                        Price
-                    </span>
 
-                </div>
-            </div>
-            <div class="book-item grid-view">
-                <div class="image-section">
-                    <img src="./../../assets/library-img.jpg" />
-                </div>
-                <div class="detail-section">
-                    <span>
-                        New Book
-                    </span>
-                    <span>
-                        Price
-                    </span>
-
-                </div>
-            </div>
-            <div class="book-item grid-view">
-                <div class="image-section">
-                    <img src="./../../assets/library-img.jpg" />
-                </div>
-                <div class="detail-section">
-                    <span>
-                        New Book
-                    </span>
-                    <span>
-                        Price
-                    </span>
-
-                </div>
-            </div>
-            <div class="book-item grid-view">
-                <div class="image-section">
-                    <img src="./../../assets/library-img.jpg" />
-                </div>
-                <div class="detail-section">
-                    <span>
-                        New Book
-                    </span>
-                    <span>
-                        Price
-                    </span>
-
-                </div>
-            </div>
-            <div class="book-item list-view">
-                <div class="image-section">
-                    <img src="./../../assets/library-img.jpg" />
-                </div>
-                <div class="detail-section">
-                    <span>
-                        New Book
-                    </span>
-                    <span>
-                        Price
-                    </span>
-
-                </div>
-            </div>
-            <div class="book-item list-view">
-                <div class="image-section">
-                    <img src="./../../assets/library-img.jpg" />
-                </div>
-                <div class="detail-section">
-                    <span>
-                        New Book
-                    </span>
-                    <span>
-                        Price
-                    </span>
-                    <span><img src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1567155649_heart.svg" /></span>
-                </div>
-            </div>
-            <div class="book-item list-view">
-                <div class="image-section">
-                    <img src="./../../assets/library-img.jpg" />
-                </div>
-                <div class="detail-section">
-                    <span>
-                        New Book
-                    </span>
-                    <span>
-                        Price
-                    </span>
-                    <span><img src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1568814349_SAVELOCATIONred.svg" /></span>
-
-                </div>
-            </div>
+        <div class="search-bar">
+            <input type='text' (keydown.enter)="searchBooks()" [(ngModel)]="searchKey" placeholder='Enter minimum 3 characters' />
+            <i class="fas fa-search" (click)="searchBooks()"></i>
         </div>
+        <div class="books">
+            <ng-container *ngIf="bookList?.length > 0; else showNoBooksMsg">
+                <div *ngFor="let book of bookList" [ngClass]="listView ? 'list-view' :'grid-view'" class="book-item">
+                    <div class="image-section" (click)="navigateToDetail(book.id)">
+                        <img src={{book.volumeInfo.imageLinks.thumbnail}} />
+                    </div>
+                    <div class="detail-section">
+                        <span class="title"> {{book.volumeInfo.title}} </span>
+                        <span class="subtitle">{{book.volumeInfo.subtitle}}</span>
 
+                        <div class="fav">
+                            <span *ngIf="book.isFav" (click)="book.isFav=!book.isFav ; showInfo('Removed from') "> <img
+                                    alt='heart' src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1568814349_SAVELOCATIONred.svg" /></span>
+                            <span *ngIf="!book.isFav" (click)="book.isFav=!book.isFav;showInfo('Added in')"> <img alt='heart'
+                                    src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1567155649_heart.svg" /></span>
+                        </div>
+
+                    </div>
+                    <div class="summary-section" *ngIf="listView" (click)="navigateToDetail(book.id)">
+                        <span class="item label"> Authors:</span>
+                        <span class="item"> {{book.volumeInfo.authorsName}} </span>
+                        <span class="item label"> Publisher: </span>
+                        <span class="item">{{book.volumeInfo.publisher}}, {{ book.volumeInfo.publishedDate }}</span>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #showNoBooksMsg>
+                <label class="no-list">No Books</label>
+            </ng-template>
+        </div>
 
     </div>
 </div>
