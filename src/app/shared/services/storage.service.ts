@@ -5,6 +5,7 @@ export class StorageService {
     key: string = 'LIBRARY_DATA';
     constructor() { }
 
+    /* To get data from local storage */
     getData(key: string) {
         const libData = this.getLibData();
         if (libData) {
@@ -13,14 +14,23 @@ export class StorageService {
         return null;
     }
 
+    /**
+     * To fetch data from local storage for this application : LIBRARY_DATA
+     */
     private getLibData() {
         return JSON.parse(window.localStorage.getItem(this.key));
     }
 
+
+    /**
+     * @param  {any} libData
+     * To save data to local storage for this application : LIBRARY_DATA
+     */
     private setLibData(libData: any) {
         return window.localStorage.setItem(this.key, JSON.stringify(libData));
     }
 
+    /* To save data in local storage */
     saveData(key: string, value: any) {
         let libData = this.getLibData();
         if (!libData) {
@@ -30,6 +40,7 @@ export class StorageService {
         this.setLibData(libData);
     }
 
+    /* To delete data in local storage */
     removeData(key: string) {
         const libData = this.getLibData();
         if (libData) {
@@ -38,6 +49,7 @@ export class StorageService {
         }
     }
 
+    /* To clear entire data LIBRARY_DATA */
     clearLibData() {
         window.localStorage.removeItem(this.key);
     }
