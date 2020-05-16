@@ -90,7 +90,11 @@ export class BookListComponent implements OnInit {
                 const { items } = res as any;
                 items.forEach(element => {
                     element.isFav = false;
-                    element.volumeInfo.authorsName = element.volumeInfo.authors.join(',');
+                    if (element.volumeInfo.authors && Array.isArray(element.volumeInfo.authors)) {
+                        element.volumeInfo.authorsName = element.volumeInfo.authors.join(',');
+                    } else {
+                        element.volumeInfo.authorsName = "NA"
+                    }
                 });
                 this.allList = newBooks.concat(items); // Copy
                 this.bookList = newBooks.concat(items).slice(0, this.recordPerPage); // for pagination
